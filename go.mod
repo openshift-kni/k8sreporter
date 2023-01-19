@@ -4,8 +4,6 @@ go 1.17
 
 require (
 	github.com/golang/glog v1.0.0
-	github.com/kennygrant/sanitize v1.2.4
-	github.com/onsi/ginkgo v1.16.5
 	github.com/openshift/client-go v0.0.0-20200827190008-3062137373b5
 	k8s.io/api v0.23.3
 	k8s.io/apimachinery v0.23.3
