@@ -3,7 +3,6 @@ module github.com/openshift-kni/k8sreporter
 go 1.20
 
 require (
-	github.com/golang/glog v1.0.0
 	k8s.io/api v0.27.1
 	k8s.io/apimachinery v0.27.1
 	k8s.io/client-go v0.27.1
