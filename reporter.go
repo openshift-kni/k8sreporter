@@ -123,7 +123,7 @@ func (r *KubernetesReporter) logPods(dirName string) {
 func (r *KubernetesReporter) logNodes(dirName string) {
 	f, err := logFileFor(r.reportPath, dirName, "nodes")
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "failed to open nodes file: %v\n", dirName)
+		fmt.Fprintf(os.Stderr, "failed to open nodes file: %v: %v\n", dirName, err)
 		return
 	}
 	defer f.Close()
@@ -155,7 +155,7 @@ func (r *KubernetesReporter) logLogs(since time.Time, dirName string) {
 		}
 		f, err := logFileFor(r.reportPath, dirName, pod.Namespace+"_"+pod.Name+"_pods_logs")
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "failed to open pods_logs file: %v\n", dirName)
+			fmt.Fprintf(os.Stderr, "failed to open pods_logs file: %v: %v\n", dirName, err)
 			return
 		}
 		defer f.Close()
