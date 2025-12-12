@@ -7,7 +7,6 @@ import (
 
 	sriovv1 "github.com/k8snetworkplumbingwg/sriov-network-operator/api/v1"
 	sriovNamespaces "github.com/k8snetworkplumbingwg/sriov-network-operator/test/util/namespaces"
-	metallbv1beta1 "github.com/metallb/metallb-operator/api/v1beta1"
 	"github.com/openshift-kni/k8sreporter"
 	"k8s.io/apimachinery/pkg/runtime"
 )
@@ -25,16 +24,11 @@ func main() {
 		if err != nil {
 			return err
 		}
-		err = metallbv1beta1.AddToScheme(s)
-		if err != nil {
-			return err
-		}
 		return nil
 	}
 
 	namespacesToDump := map[string]bool{
 		sriovNamespaces.Test: true,
-		"metallb-system":     true,
 	}
 
 	// The list of CRDs we want to dump
@@ -43,7 +37,6 @@ func main() {
 		{Cr: &sriovv1.SriovNetworkList{}},
 		{Cr: &sriovv1.SriovNetworkNodePolicyList{}},
 		{Cr: &sriovv1.SriovOperatorConfigList{}},
-		{Cr: &metallbv1beta1.MetalLBList{}},
 	}
 
 	// The namespaces we want to dump resources for (including pods and pod logs)
